@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Serving Hearts Charity Inc.</title>
+        <link rel="icon" type="image/x-icon" href="images/shlogo.png">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/swiper-bundle.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        /* Map styles */
+        #map {
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 10;
+            left: 0;
+        }
+
+        nav, .footer {
+            position: relative; /* Ensure the navbar and footer are not overlapped */
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logoContent">
+            <a href="index.html" class="logo"><img src="images/logo.png" alt="Serving Hearts Logo"></a>
+        </div>
+        <nav id="navbar">
+            <a href="donate.html">Donate</a>
+            <a href="receive.html">Receive</a>
+            <a href="locator.html">Drive</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contactus.html">Contact Us</a>
+        </nav>
+
+        <div class="right-content">
+            <a href="../USER-VERIFICATION/login.php" class="btn">Sign Up</a>
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+    </header>
+<div id="map"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!--Swiper JS-->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!--Javascript-->
+    <script src="js/script.js"></script>
+
+    <script>
+        let streetView;
+        let isStreetViewActive = false;
+        let map;
+        var markers = [];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: new google.maps.LatLng(14.5875, 121.0925), // Center of Pasig City, Philippines
+                zoom: 13,
+                mapTypeControl: false,  // Disable map type control (removes map/satellite buttons)
+                streetViewControl: true,  // Keep the Street View control (Pegman icon)
+                zoomControl: true,  // Optional: Keep zoom controls if you want them
+                fullscreenControl: false  // Remove full-screen control
+            });
+
+            loadMarkers();
+
+            // Initialize the Street View service
+            streetView = map.getStreetView();
+            streetView.setVisible(false);  // Initially hide Street View
+
+            // Listen for changes in the Street View panorama
+            streetView.addListener('visible_changed', function() {
+                if (streetView.getVisible()) {
+                    document.body.classList.add('mapsConsumerlibappresolution_high'); // Apply class to hide the top bar
+                    document.querySelector('.top-bar').classList.add('hidden');  // Hide the top bar when Street View is active
+                } else {
+                    document.body.classList.remove('mapsConsumerlibappresolution_high'); // Remove class when back to map
+                    document.querySelector('.top-bar').classList.remove('hidden');  // Show the top bar when Street View is inactive
+                }
+            });
+        }
+
+        function loadMarkers() {
+            var infoWindow = new google.maps.InfoWindow();
+
+            // Fetch XML data
+            downloadUrl('../EVENT_MODULE/xml.php', function(data, status) {
+                if (status === 200) {
+                    var xml = data.responseXML;
+                    var markersData = xml.documentElement.getElementsByTagName('marker');
+                    Array.prototype.forEach.call(markersData, function(markerElem) {
+                        var id = markerElem.getAttribute('id');
+                        var name = markerElem.getAttribute('name');
+                        var event_id = markerElem.getAttribute('event_id');
+                        var address = markerElem.getAttribute('address');
+                        var datetime = markerElem.getAttribute('datetime');
+                        var imagePath = markerElem.getAttribute('image_path');
+                        var status = markerElem.getAttribute('status');
+                        var point = new google.maps.LatLng(
+                            parseFloat(markerElem.getAttribute('lat')),
+                            parseFloat(markerElem.getAttribute('lng'))
+                        );
+
+                        var iconUrl = (status === 'ended') ? 
+                            '../EVENT_MODULE/markers/grey_marker.png' : 
+                            '../EVENT_MODULE/markers/red_marker.png';
+
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: point,
+                            icon: {
+                                url: iconUrl,
+                                scaledSize: new google.maps.Size(50, 50),
+                                origin: new google.maps.Point(0, 0),
+                                anchor: new google.maps.Point(15, 30)
+                            }
+                        });
+
+                        var infowincontent = createInfoWindowContent(name, event_id, address, datetime, imagePath, status);
+                        marker.addListener('click', function() {
+                            infoWindow.setContent(infowincontent);
+                            infoWindow.open(map, marker);
+                        });
+
+                        markers.push(marker);
+                    });
+                } else {
+                    console.error('Error loading XML data');
+                }
+            });
+        }
+
+        function createInfoWindowContent(name, event_id, address, datetime, imagePath, status) {
+            var infowincontent = document.createElement('div');
+            infowincontent.style.cssText = 'font-family: Arial, sans-serif; font-size: 16px; padding: 10px; width: 300px; height: 200px; overflow: auto;';
+
+            if (imagePath) {
+                var img = document.createElement('img');
+                img.src = imagePath;
+                img.style.width = '280px';
+                img.style.height = 'auto';
+                infowincontent.appendChild(img);
+            }
+
+            infowincontent.innerHTML += `<strong>Event ID:</strong> ${event_id}<br>
+                                        <strong>Event Name:</strong> ${name}<br>
+                                        <strong>Status:</strong> <span style="color:${status === 'active' ? 'green' : 'red'};">${status}</span><br>
+                                        <strong>Address:</strong> ${address}<br>
+                                        <strong>Date and Time:</strong> ${datetime}<br>`;
+
+            return infowincontent;
+        }
+
+        function downloadUrl(url, callback) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        callback(request, request.status);
+                    } else {
+                        console.error('HTTP error: ' + request.status);
+                    }
+                }
+            };
+            request.open('GET', url, true);
+            request.send(null);
+        }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWX0HgQi1eVsifhHYNfR5DlEwDvEZ7AA4&callback=initMap">
+    </script>
+
+    
+</body>
+</html>

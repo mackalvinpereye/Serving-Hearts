@@ -1,0 +1,45 @@
+/* General header styling */
+.main-header {
+    width: calc(95% - 250px);
+    height: 75px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between; /* Space between the logo and notification icon */
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 18rem;
+    z-index: 1000; /* Make sure the header stays on top */
+}
+
+/* Logo styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+/* Notification Icon styling */
+.notification-container {
+    position: relative;
+    font-size: 25px;
+    color: black;
+}
+.notification-container i{
+    margin-right: 10px;
+    padding-right: 20px;
+}
+
+
+/* Remove underline and borders from the link */
+.message-link {
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove any border */
+    color: black !important;
+}

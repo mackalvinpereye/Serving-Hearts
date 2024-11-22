@@ -1,0 +1,85 @@
+/* General header styling */
+.main-header {
+    width: calc(95% - 250px);
+    height: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between; /* Space between the logo and notification icon */
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 18rem;
+    z-index: 10; /* Make sure the header stays on top */
+}
+
+/* Logo styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Notification Icon styling */
+.notification-container {
+    position: relative;
+    font-size: 25px;
+    color: #333;
+    position: relative;
+    cursor: pointer;
+    margin-left: 10px;
+    right: 20px;
+}
+
+.notification-icon {
+    font-size: 25px;
+}
+
+.badge {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.timestamp {
+    display: block;
+    font-size: 12px;
+    color: #888;
+}
+

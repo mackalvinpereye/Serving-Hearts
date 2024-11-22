@@ -1,0 +1,207 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 60px; /* Push content below the header */
+}
+
+/* Sidebar container */
+.adsidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: darkred; 
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    height: 100vh; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Profile Icon Section */
+.admin-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content vertically */
+    text-align: center;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.admin-username {
+    color: white;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profile-icon {
+    font-size: 100px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.nav-links li {
+    margin: 15px 0;
+    display: flex; 
+    align-items: center;
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: white;
+}
+
+
+.fa-qrcode {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.nav-links a {
+    color: white; 
+    text-decoration: none; 
+    margin-top: 6px;
+    margin-bottom: 2px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Logout section */
+.exit {
+    display: flex; 
+    align-items: center; 
+}
+
+.exit .nav-icon {
+    margin-right: 10px;
+}
+
+.exit a {
+    color: white; 
+    text-decoration: none; 
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+/* Divider for sections */
+.divider {
+    height: 3px; 
+    background-color: #ccc; 
+    margin: 20px 0; 
+    width: 100%; 
+    flex-shrink: 0;
+}
+
+/* Adjust hover effect on links */
+.nav-links a:hover, .exit a:hover {
+    color: #ffb3b3;
+}
+
+.nav-links a:hover, .exit a:hover {
+    color: #ffb3b3;
+}
+/* Highlight active sidebar item */
+.adsidebar .nav-links li.active {
+    background-color: aliceblue;
+    color: #333;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.adsidebar .nav-links li.active a {
+    color: #333;
+}
+
+/* Dark red color for icons in active items */
+.adsidebar .nav-links li.active .nav-icon {
+    color: darkred;
+}
+
+
+
+/* Modal Container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999; /* Ensure this is higher than the sidebar's z-index */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif; /* Set consistent font family */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    z-index: 10000; /* Ensure the modal content is above other elements */
+    box-sizing: border-box; /* Ensure padding doesn’t affect width */
+}
+
+/* Modal Heading */
+.modal h2 {
+    font-size: 20px; /* Consistent heading size */
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Modal Paragraph */
+.modal p {
+    font-size: 16px; /* Consistent paragraph size */
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Modal Buttons */
+.confirm-btn, .cancel-btn {
+    background-color: #990F02;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Consistent button font size */
+}
+
+.cancel-btn {
+    background-color: #333;
+}
+
+.confirm-btn:hover {
+    background-color: #A91B0D;
+}
+
+.cancel-btn:hover {
+    background-color: #555;
+}
