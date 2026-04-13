@@ -529,7 +529,7 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
             editEventModal.style.display = "flex"; // Show the edit modal
         });
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWX0HgQi1eVsifhHYNfR5DlEwDvEZ7AA4&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR=API=HERE&callback=initMap"></script>
 
     <script>
         function previewImage(event) {

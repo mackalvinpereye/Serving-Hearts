@@ -195,6 +195,6 @@ include '../UI/sidebar.php'
         }
     </script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWX0HgQi1eVsifhHYNfR5DlEwDvEZ7AA4&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR=API=HERE&callback=initMap"></script>
 </body>
 </html>

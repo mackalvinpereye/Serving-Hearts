@@ -166,7 +166,7 @@ $unique_number = $_SESSION['unique_number'];
 <body>
 <div class="container">
     <div class="header-flex">
-        <h1>List of Bookings Attended</h1>
+        <h1>List of Blood Request</h1>
     </div>
 
     <div class="table-wrapper">
