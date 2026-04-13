@@ -1,4 +1,4 @@
-# ServingHearts 🩸
+# ServingHeartsV2 🩸
 **A complete blood donation, banking, requesting, and handover management system — v2 — powered by PHP, MySQL, Google Maps API, and QR-based attendance.**
 
 [![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-777bb4.svg?style=flat-square&logo=php)](https://www.php.net/)
