@@ -231,7 +231,7 @@ if (isset($_SESSION['id'])) {
 
     <header>
         <div class="logoContent">
-            <a href="../WEB/home.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
+            <a href="../WEB/index.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
         </div>
     </header>
 
@@ -317,7 +317,7 @@ if (isset($_SESSION['id'])) {
                     <button type="submit" name="signup-btn" class="btn">Sign Up</button>
 
                     <p class="text-center">Already a member? <a href="../USER-VERIFICATION/login.php">Login</a></p>
-                    <a href="../WEB/home.html" class="back-to-home">Back to Home</a>
+                    <a href="../WEB/index.html" class="back-to-home">Back to Home</a>
                 </form>
             </div>
         </div>

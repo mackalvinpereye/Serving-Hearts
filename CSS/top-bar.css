@@ -1,6 +1,6 @@
 /* General header styling */
 .main-header {
-    width: calc(95% - 250px);
+    width: calc(100% - 250px);
     height: 70px;
     background-color: white;
     display: flex;
@@ -10,7 +10,7 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 18rem;
+    left: 15.5rem;
     z-index: 10; /* Make sure the header stays on top */
 }
 

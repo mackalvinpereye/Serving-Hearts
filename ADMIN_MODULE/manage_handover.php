@@ -180,8 +180,8 @@ if (isset($_POST['save']) && isset($_SESSION['requestData'])) {
 
                             // Proceed with saving the handover request for the requested component
                             $stmt = $conn->prepare("INSERT INTO handover_requests 
-                                (reference_code, requester, donor, unique_number, patientname, bloodtype, bloodcomponent, bags, hospital, physician, received_by) 
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                                (reference_code, requester, donor, unique_number, patientname, bloodtype, bloodcomponent, bags, hospital, physician, received_by, status) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Delivered')"
                             );
 
                             $stmt->bind_param(
@@ -245,7 +245,7 @@ $requestData = $_SESSION['requestData'];
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            overflow: auto;
             margin-left: 30rem;
             margin-top: 6.3rem;
         }

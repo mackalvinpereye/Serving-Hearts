@@ -207,7 +207,7 @@
 <body>
     <header>
         <div class="logoContent">
-            <a href="../WEB/home.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
+            <a href="../WEB/index.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
         </div>
     </header>
     

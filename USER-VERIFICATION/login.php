@@ -197,7 +197,7 @@ $remaining_time_in_seconds = $lockout_active ? $lockout_time - time() : 0; // Re
 <body>
 <header>
         <div class="logoContent">
-            <a href="../WEB/home.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
+            <a href="../WEB/index.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
         </div>
     </header>
     <div class="split-container">
@@ -238,7 +238,7 @@ $remaining_time_in_seconds = $lockout_active ? $lockout_time - time() : 0; // Re
 
                     <p class="text-center">Don't have an account yet? <a href="../USER-VERIFICATION/signup.php">Sign Up</a></p>
                     <a href="../USER-VERIFICATION/forgot_password.php" class="forgot-pass">Forgot your Password?</a>
-                    <a href="../WEB/home.html" class="back-to-home">Back to Home</a>
+                    <a href="../WEB/index.html" class="back-to-home">Back to Home</a>
                 
                 </form>
             </div>

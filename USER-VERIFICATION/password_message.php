@@ -101,7 +101,7 @@
 
     <header>
         <div class="logoContent">
-            <a href="home.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
+            <a href="index.html" class="logo"><img src="../WEB/images/logo.png" alt="Serving Hearts Logo"></a>
         </div>
     </header>
 
